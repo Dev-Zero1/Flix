@@ -7,7 +7,8 @@
 //
 
 import UIKit
-//import AFNetworking
+import AlamofireImage
+
 class NowPlayingViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
@@ -53,17 +54,17 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
         
-        let movie = movies[indexPath.row]
-        let title = movie["title"] as! String
-        let overview = movie["overview"] as! String
-        let imgStr = movie["poster_path"] as! String
+        let movie       =   movies[indexPath.row]
+        let title       =   movie["title"] as! String
+        let overview    =   movie["overview"] as! String
+        let imgStr      =   movie["poster_path"] as! String
         
         cell.titleLabel.text = title
         cell.overLabel.text = overview
         
         let imgBaseURL = "https://image.tmdb.org/t/p/w500"
         let imgURL = URL(string: imgBaseURL+imgStr)
-        cell.img.af_setImage(URL: imgURL)
+        cell.img.af_setImage(withURL: imgURL!)
         return cell
     }
 }
