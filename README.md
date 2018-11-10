@@ -40,8 +40,10 @@ Here's a walkthrough of implemented user stories:
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
+Podfile issues, Oauth was not compatible with my version of xcode. 
+Issues indexPath & misusing IndedPath in URL request 
+Issues implementing activityIndicator, UI element and outlet created, logic is not valid.
 
-Describe any challenges encountered while building the app.
 
 ## License
 
