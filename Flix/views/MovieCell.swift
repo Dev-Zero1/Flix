@@ -1,6 +1,6 @@
 //
 //  MovieCell.swift
-//  
+//
 //
 //  Created by administrator on 11/9/18.
 //
@@ -27,3 +27,4 @@ class MovieCell: UITableViewCell {
     }
 
 }
+

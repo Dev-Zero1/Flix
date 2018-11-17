@@ -14,9 +14,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = true
-    }
+    
     var movies:[[String:Any]]  = []
     var refreshControl: UIRefreshControl!
     
@@ -75,6 +73,8 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         return movies.count
     }
     
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
         
@@ -90,6 +90,20 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource {
         let imgURL = URL(string: imgBaseURL+imgStr)
         cell.img.af_setImage(withURL: imgURL!)
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        let cell = sender as! UITableViewCell
+        
+        if let indexPath = tableView.indexPath(for: cell){
+        let movie = movies[indexPath.row]
+        let detailViewController = segue.destination as! detailVC
+        detailViewController.movie = movie
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
     }
 }
 
